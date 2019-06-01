@@ -1,10 +1,10 @@
 import React from "react";
-import "./App.css";
+import { Title } from "./styles";
 
 function App() {
   return (
     <div className="App">
-      <h1>Clean Code</h1>
+      <Title>Clean Code</Title>
     </div>
   );
 }
