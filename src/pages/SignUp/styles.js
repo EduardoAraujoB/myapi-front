@@ -15,10 +15,11 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   span {
     font-weight: bold;
     font-size: 22px;
-    color: #fc6963;
+    color: #888888;
     text-align: center;
     padding-bottom: 20px;
     width: 100%;
@@ -57,11 +58,17 @@ export const Form = styled.form`
     border: 0;
     border-radius: 5px;
     width: 100%;
+    &:hover {
+      cursor: pointer;
+    }
+    &:active {
+      opacity: 0.8;
+    }
   }
   a {
     font-size: 16;
     font-weight: bold;
-    color: #999;
+    color: #888888;
     text-decoration: none;
   }
 `;

@@ -1,19 +1,33 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import { Form, Container } from "./styles";
+import api from "../../services/api";
 
 class SignUp extends Component {
   state = {
-    username: "",
+    name: "",
+    birthdate: "",
     email: "",
     password: "",
     error: ""
   };
 
-  handleSignUp = e => {
+  handleSignUp = async e => {
     e.preventDefault();
-    alert("Eu vou te registrar");
+    const { name, birthdate, email, password } = this.state;
+    if (!name || !email || !birthdate || !password) {
+      this.setState({ error: "Preencha todos os campos para se cadastrar" });
+    } else {
+      const send = { name, birthdate, email, password };
+      try {
+        await api.post("http://127.0.0.1:3100/api/member", send);
+        this.props.history.push("/");
+      } catch (err) {
+        console.log(err, send);
+        this.setState({ error: "erro ao cadastrar" });
+      }
+    }
   };
 
   render() {
@@ -27,7 +41,16 @@ class SignUp extends Component {
             placeholder="Nome do usuário"
             onChange={e =>
               this.setState({
-                username: e.target.value
+                name: e.target.value
+              })
+            }
+          />
+          <input
+            type="date"
+            placeholder="Data de Aniversário"
+            onChange={e =>
+              this.setState({
+                birthdate: e.target.value
               })
             }
           />
@@ -50,4 +73,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
