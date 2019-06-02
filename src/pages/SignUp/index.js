@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import { Form, Container } from "./styles";
 import api from "../../services/api";
+import { login } from "../../services/auth";
 
 class SignUp extends Component {
   state = {
@@ -21,8 +22,12 @@ class SignUp extends Component {
     } else {
       const send = { name, birthdate, email, password };
       try {
-        await api.post("http://127.0.0.1:3100/api/member", send);
-        this.props.history.push("/");
+        const response = await api.post(
+          "http://127.0.0.1:3100/api/member",
+          send
+        );
+        login(response.data.token);
+        this.props.history.push("/app");
       } catch (err) {
         console.log(err, send);
         this.setState({ error: "erro ao cadastrar" });
