@@ -14,4 +14,8 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
   }
+  button {
+    outline: none;
+    border: none;
+  }
 `;

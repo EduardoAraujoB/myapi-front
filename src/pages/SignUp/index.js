@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { Form, Container } from "./styles";
 import api from "../../services/api";
 import { login } from "../../services/auth";
+import Menu from "../../components/Menu";
 
 class SignUp extends Component {
   state = {
@@ -37,43 +38,46 @@ class SignUp extends Component {
 
   render() {
     return (
-      <Container>
-        <Form onSubmit={this.handleSignUp}>
-          <span>SignUp</span>
-          {this.state.error && <p>{this.state.error}</p>}
-          <input
-            type="text"
-            placeholder="Nome do usuário"
-            onChange={e =>
-              this.setState({
-                name: e.target.value
-              })
-            }
-          />
-          <input
-            type="date"
-            placeholder="Data de Aniversário"
-            onChange={e =>
-              this.setState({
-                birthdate: e.target.value
-              })
-            }
-          />
-          <input
-            type="email"
-            placeholder="Endereço de email"
-            onChange={e => this.setState({ email: e.target.value })}
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            onChange={e => this.setState({ password: e.target.value })}
-          />
-          <button type="submit">Cadastrar-se</button>
-          <hr />
-          <Link to="/">Fazer Login</Link>
-        </Form>
-      </Container>
+      <>
+        <Menu />
+        <Container>
+          <Form onSubmit={this.handleSignUp}>
+            <span>SignUp</span>
+            {this.state.error && <p>{this.state.error}</p>}
+            <input
+              type="text"
+              placeholder="Nome do usuário"
+              onChange={e =>
+                this.setState({
+                  name: e.target.value
+                })
+              }
+            />
+            <input
+              type="date"
+              placeholder="Data de Aniversário"
+              onChange={e =>
+                this.setState({
+                  birthdate: e.target.value
+                })
+              }
+            />
+            <input
+              type="email"
+              placeholder="Endereço de email"
+              onChange={e => this.setState({ email: e.target.value })}
+            />
+            <input
+              type="password"
+              placeholder="Senha"
+              onChange={e => this.setState({ password: e.target.value })}
+            />
+            <button type="submit">Cadastrar-se</button>
+            <hr />
+            <Link to="/">Fazer Login</Link>
+          </Form>
+        </Container>
+      </>
     );
   }
 }

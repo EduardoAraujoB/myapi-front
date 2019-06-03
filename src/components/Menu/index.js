@@ -4,10 +4,10 @@ import { Header, Title, MenuButton, Logo } from "./styles";
 const Menu = () => {
   return (
     <Header>
-      <Logo>Logo</Logo>
+      <Logo href="/">Logo</Logo>
       <Title>Nome do blog</Title>
       <MenuButton>Articles</MenuButton>
-      <MenuButton>SignUp</MenuButton>
+      <MenuButton href="/signup">SignUp</MenuButton>
       <MenuButton>SignIn</MenuButton>
     </Header>
   );

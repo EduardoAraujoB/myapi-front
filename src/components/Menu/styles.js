@@ -9,9 +9,12 @@ export const Header = styled.div`
   height: 75px;
 `;
 
-export const Logo = styled.h1`
+export const Logo = styled.a`
   flex-grow: 1;
   color: #fff;
+  font-weight: bold;
+  font-size: 30px;
+  text-decoration: none;
 `;
 
 export const Title = styled.span`
@@ -22,7 +25,7 @@ export const Title = styled.span`
   font-size: 24px;
 `;
 
-export const MenuButton = styled.button`
+export const MenuButton = styled.a`
   background: none;
   padding: 10px;
   margin: 0 4px;

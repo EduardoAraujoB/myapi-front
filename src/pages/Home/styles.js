@@ -26,15 +26,18 @@ export const ContainerItem = styled.div`
   }
   button {
     margin-top: 20px;
-    color: #fff;
-    font-size: 16px;
     width: 100%;
     height: 50px;
-    background: #fc6963;
-    border: 0;
-    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    color: #fc6963;
+    border: 2px solid #fc6963;
+    border-radius: 25px;
     &:hover {
       cursor: pointer;
+      background: #fc6963;
+      color: #fff;
     }
     &:active {
       opacity: 0.8;
