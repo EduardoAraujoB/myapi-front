@@ -22,13 +22,26 @@ export const Title = styled.span`
   font-size: 24px;
 `;
 
-export const Item = styled.a`
+export const MenuButton = styled.button`
+  background: none;
   padding: 10px;
+  margin: 0 4px;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
   font-size: 24px;
+  border: 2px solid #fff;
+  border-radius: 10px;
   &:hover {
     cursor: pointer;
+    background: #fff;
+    color: #fc6963;
+    border: 2px solid #fc6963;
+  }
+  &:active {
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 10px;
+    background: none;
   }
 `;
