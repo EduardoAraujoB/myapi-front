@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Content } from "./styles";
+import { Container, ContainerItem } from "./styles";
 import Menu from "../../components/Menu";
 
 class Home extends Component {
@@ -7,9 +7,40 @@ class Home extends Component {
     return (
       <>
         <Menu />
-        <Content>
-          <h1>Testando</h1>
-        </Content>
+        <Container>
+          <ContainerItem>
+            <h1>Item</h1>
+            <p>
+              Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
+              Texto Texto Texto Texto Texto
+            </p>
+            <button>Acessar</button>
+          </ContainerItem>
+          <ContainerItem>
+            <h1>Item</h1>
+            <p>
+              Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
+              Texto Texto Texto Texto Texto
+            </p>
+            <button>Acessar</button>
+          </ContainerItem>
+          <ContainerItem>
+            <h1>Item</h1>
+            <p>
+              Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
+              Texto Texto Texto Texto Texto
+            </p>
+            <button>Acessar</button>
+          </ContainerItem>
+          <ContainerItem>
+            <h1>Item</h1>
+            <p>
+              Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto
+              Texto Texto Texto Texto Texto
+            </p>
+            <button>Acessar</button>
+          </ContainerItem>
+        </Container>
       </>
     );
   }
