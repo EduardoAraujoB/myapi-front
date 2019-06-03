@@ -38,6 +38,7 @@ export const ContainerItem = styled.div`
       cursor: pointer;
       background: #fc6963;
       color: #fff;
+      transition: 100ms;
     }
     &:active {
       opacity: 0.8;

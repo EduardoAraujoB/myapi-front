@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 85vh;
 `;
 
 export const Form = styled.form`
@@ -51,17 +51,21 @@ export const Form = styled.form`
     width: 100%;
   }
   button {
-    color: #fff;
+    color: #fc6963;
+    border: 2px solid #fc6963;
     font-size: 16px;
-    background: #fc6963;
+    font-weight: bold;
+    background: none;
     height: 56px;
-    border: 0;
     border-radius: 5px;
     width: 100%;
     &:hover {
       cursor: pointer;
+      background: #fc6963;
+      color: #fff;
+      transition: 100ms;
     }
-    &:active {
+    &:ac &:active {
       opacity: 0.8;
     }
   }

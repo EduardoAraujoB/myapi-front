@@ -40,6 +40,7 @@ export const MenuButton = styled.a`
     background: #fff;
     color: #fc6963;
     border: 2px solid #fc6963;
+    transition: 100ms;
   }
   &:active {
     border: 2px solid #fff;
