@@ -8,7 +8,7 @@ const Menu = () => {
       <Title>Nome do blog</Title>
       <MenuButton>Articles</MenuButton>
       <MenuButton href="/signup">SignUp</MenuButton>
-      <MenuButton>SignIn</MenuButton>
+      <MenuButton href="/signin">SignIn</MenuButton>
     </Header>
   );
 };
