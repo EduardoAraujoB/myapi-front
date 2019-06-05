@@ -24,11 +24,15 @@ export const ContainerItem = styled.div`
     margin-top: 20px;
     font-size: 20px;
   }
-  button {
+  a {
+    display: flex;
+    background: none;
     margin-top: 20px;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 50px;
-    font-size: 16px;
+    font-size: 19px;
     font-weight: bold;
     background: none;
     color: #fc6963;
