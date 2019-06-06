@@ -6,7 +6,7 @@ const Menu = () => {
     <Header>
       <Logo href="/">Logo</Logo>
       <Title>Nome do blog</Title>
-      <MenuButton>Articles</MenuButton>
+      <MenuButton href="/articles">Articles</MenuButton>
       <MenuButton href="/signup">SignUp</MenuButton>
       <MenuButton href="/signin">SignIn</MenuButton>
     </Header>
