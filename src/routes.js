@@ -1,5 +1,5 @@
-import React from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import { isAuthenticated } from "./services/auth";
 
@@ -8,30 +8,43 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Articles from "./pages/Articles";
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      isAuthenticated() ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-      )
+class Routes extends Component {
+  state = {
+    authenticate: "",
+    pages: {
+      Home,
+      Articles,
+      SignIn,
+      SignUp,
+      Members: ""
     }
-  />
-);
-
-const Routes = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/articles" component={Articles} />
-      <Route path="/signin" component={SignIn} />
-      <Route path="/signup" component={SignUp} />
-      <PrivateRoute path="/members" component={() => <h1>Member</h1>} />
-      <Route exact path="*" component={() => <h1>Page not found</h1>} />
-    </Switch>
-  </BrowserRouter>
-);
+  };
+  async componentWillMount() {
+    const auth = await isAuthenticated();
+    console.log(auth);
+    this.setState({ authenticate: auth });
+    console.log(this.state.authenticate);
+    if (this.state.authenticate === true) {
+      this.setState({ pages: { Members: Home } });
+    } else {
+      this.setState({ pages: { Members: SignIn } });
+    }
+  }
+  render() {
+    const { pages } = this.state;
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={pages.Home} />
+          <Route path="/articles" component={pages.Articles} />
+          <Route path="/signin" component={pages.SignIn} />
+          <Route path="/signup" component={pages.SignUp} />
+          <Route path="/members" component={pages.Members} />
+          <Route exact path="*" component={() => <h1>Page not found</h1>} />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 export default Routes;
