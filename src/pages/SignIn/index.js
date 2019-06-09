@@ -6,6 +6,7 @@ import api from "../../services/api";
 import { login, logout } from "../../services/auth";
 import Menu from "../../components/Menu";
 import { isAuthenticated } from "../../services/auth";
+import Loading from "../../components/Loading";
 
 class SignIn extends Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class SignIn extends Component {
 
   render() {
     if (this.loading) {
-      return <h1>Carregando</h1>;
+      return <Loading />;
     }
     if (!this.state.authenticated) {
       return (

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Header, Title, MenuButton, Logo } from "./styles";
 import { isAuthenticated } from "../../services/auth";
+import Loading from "../Loading";
 
 class Menu extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Menu extends Component {
 
   render() {
     if (this.loading) {
-      return <h1>Carregando</h1>;
+      return <Loading />;
     }
     if (this.state.authenticated) {
       return (
