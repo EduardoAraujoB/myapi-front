@@ -1,16 +1,33 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 
 import { Form, Container } from "./styles";
 import api from "../../services/api";
 import { login, logout } from "../../services/auth";
 import Menu from "../../components/Menu";
+import { isAuthenticated } from "../../services/auth";
 
 class SignIn extends Component {
-  state = {
-    email: "",
-    password: "",
-    error: ""
+  constructor(props) {
+    super(props);
+    this.state = {
+      authenticated: false,
+      email: "",
+      password: "",
+      error: ""
+    };
+  }
+  _isMounted = false;
+  loading = false;
+
+  componentWillMount = async () => {
+    this._isMounted = true;
+    this.loading = true;
+    const auth = await isAuthenticated();
+    if (this._isMounted) {
+      this.loading = false;
+      this.setState({ authenticated: auth });
+    }
   };
 
   handleSignUp = async e => {
@@ -32,31 +49,42 @@ class SignIn extends Component {
     }
   };
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
-    return (
-      <>
-        <Menu />
-        <Container>
-          <Form onSubmit={this.handleSignUp}>
-            <span>SignIn</span>
-            {this.state.error && <p>{this.state.error}</p>}
-            <input
-              type="email"
-              placeholder="Endereço de email"
-              onChange={e => this.setState({ email: e.target.value })}
-            />
-            <input
-              type="password"
-              placeholder="Senha"
-              onChange={e => this.setState({ password: e.target.value })}
-            />
-            <button type="submit">Fazer Login</button>
-            <hr />
-            <Link to="/signup">Cadastrar</Link>
-          </Form>
-        </Container>
-      </>
-    );
+    if (this.loading) {
+      return <h1>Carregando</h1>;
+    }
+    if (!this.state.authenticated) {
+      return (
+        <>
+          <Menu />
+          <Container>
+            <Form onSubmit={this.handleSignUp}>
+              <span>SignIn</span>
+              {this.state.error && <p>{this.state.error}</p>}
+              <input
+                type="email"
+                placeholder="Endereço de email"
+                onChange={e => this.setState({ email: e.target.value })}
+              />
+              <input
+                type="password"
+                placeholder="Senha"
+                onChange={e => this.setState({ password: e.target.value })}
+              />
+              <button type="submit">Fazer Login</button>
+              <hr />
+              <Link to="/signup">Cadastrar</Link>
+            </Form>
+          </Container>
+        </>
+      );
+    } else {
+      return <Redirect to="/" />;
+    }
   }
 }
 
