@@ -1,35 +1,28 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import { isAuthenticated } from "./services/auth";
-
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Articles from "./pages/Articles";
+import Members from "./pages/Members";
 
 class Routes extends Component {
-  state = {
-    authenticate: "",
-    pages: {
-      Home,
-      Articles,
-      SignIn,
-      SignUp,
-      Members: ""
-    }
-  };
-  async componentWillMount() {
-    const auth = await isAuthenticated();
-    console.log(auth);
-    this.setState({ authenticate: auth });
-    console.log(this.state.authenticate);
-    if (this.state.authenticate === true) {
-      this.setState({ pages: { Members: Home } });
-    } else {
-      this.setState({ pages: { Members: SignIn } });
-    }
+  this_isMounted = false;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      pages: {
+        Home,
+        Articles,
+        SignIn,
+        SignUp,
+        Members
+      }
+    };
   }
+
   render() {
     const { pages } = this.state;
     return (
