@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { isAuthenticated } from "../../services/auth";
+import Loading from "../../components/Loading";
+import Menu from "../../components/Menu";
 
 class Members extends Component {
   _isMounted = false;
@@ -9,7 +11,7 @@ class Members extends Component {
     super(props);
     this.state = {
       loading: false,
-      authenticate: false
+      authenticated: false
     };
   }
 
@@ -19,22 +21,25 @@ class Members extends Component {
     const auth = await isAuthenticated();
     if (this._isMounted) {
       this.loading = false;
-      this.setState({ authenticate: auth });
+      this.setState({ authenticated: auth });
     }
   };
 
   componentWillUnmount() {
     this._isMounted = false;
-    console.log(this._isMounted);
   }
 
   render() {
     if (this.loading) {
-      return <h1>Carregando</h1>;
+      return <Loading />;
     }
-    console.log(this.state.authenticate);
     if (this.state.authenticate === true) {
-      return <h1>Autenticado</h1>;
+      return (
+        <>
+          <Menu auth={this.state.authenticate} />
+          <h1>Autenticado</h1>
+        </>
+      );
     } else {
       return <Redirect to="/" />;
     }

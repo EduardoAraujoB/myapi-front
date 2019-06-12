@@ -61,7 +61,7 @@ class SignIn extends Component {
     if (!this.state.authenticated) {
       return (
         <>
-          <Menu />
+          <Menu auth={this.state.authenticated} />
           <Container>
             <Form onSubmit={this.handleSignUp}>
               <span>SignIn</span>
