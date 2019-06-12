@@ -38,7 +38,7 @@ class Menu extends Component {
           <Title>Nome do blog</Title>
           <MenuButton href="/articles">Articles</MenuButton>
           <MenuButton href="/members">Members</MenuButton>
-          <MenuButton href="/">Logout</MenuButton>
+          <MenuButton href="/logout">Logout</MenuButton>
         </Header>
       );
     } else {
