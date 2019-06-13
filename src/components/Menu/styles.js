@@ -10,6 +10,7 @@ export const Header = styled.div`
 `;
 
 export const Logo = styled.a`
+  margin-left: 10px;
   flex-grow: 1;
   color: #fff;
   font-weight: bold;
@@ -19,7 +20,7 @@ export const Logo = styled.a`
 
 export const Title = styled.span`
   flex-grow: 1;
-  margin-left: 10px;
+  margin-left: 30px;
   color: #fff;
   font-weight: bold;
   font-size: 24px;
