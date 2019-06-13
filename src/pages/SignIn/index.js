@@ -3,33 +3,20 @@ import { Link, withRouter, Redirect } from "react-router-dom";
 
 import { Form, Container } from "./styles";
 import api from "../../services/api";
-import { login, logout } from "../../services/auth";
+import { login } from "../../services/auth";
 import Menu from "../../components/Menu";
-import { isAuthenticated } from "../../services/auth";
 import Loading from "../../components/Loading";
+import { withAuthentication } from "../../components/hocs/Authentication";
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      authenticated: false,
       email: "",
       password: "",
       error: ""
     };
   }
-  _isMounted = false;
-  loading = false;
-
-  componentWillMount = async () => {
-    this._isMounted = true;
-    this.loading = true;
-    const auth = await isAuthenticated();
-    if (this._isMounted) {
-      this.loading = false;
-      this.setState({ authenticated: auth });
-    }
-  };
 
   handleSignUp = async e => {
     e.preventDefault();
@@ -40,7 +27,6 @@ class SignIn extends Component {
       const send = { email, password };
       try {
         const response = await api.post("/members/authenticate", send);
-        logout();
         login(response.data.token);
         this.props.history.push("/");
       } catch (err) {
@@ -50,18 +36,14 @@ class SignIn extends Component {
     }
   };
 
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
   render() {
-    if (this.loading) {
+    if (this.props.authentication.loading) {
       return <Loading />;
     }
-    if (!this.state.authenticated) {
+    if (!this.props.authentication.authenticated) {
       return (
         <>
-          <Menu auth={this.state.authenticated} />
+          <Menu auth={this.props.authentication.authenticated} />
           <Container>
             <Form onSubmit={this.handleSignUp}>
               <span>SignIn</span>
@@ -89,4 +71,4 @@ class SignIn extends Component {
   }
 }
 
-export default withRouter(SignIn);
+export default withAuthentication()(withRouter(SignIn));

@@ -4,12 +4,11 @@ import Menu from "../../components/Menu";
 import Loading from "../../components/Loading";
 
 import api from "../../services/api";
-import { isAuthenticated } from "../../services/auth";
+import { withAuthentication } from "../../components/hocs/Authentication";
 
 class Home extends Component {
   state = {
-    articles: [],
-    authenticated: false
+    articles: []
   };
   _isMounted = false;
   loading = false;
@@ -19,11 +18,9 @@ class Home extends Component {
     this.loading = true;
 
     const articles = await api.get("/articles");
-    const auth = await isAuthenticated();
-
     if (this._isMounted) {
       this.loading = false;
-      this.setState({ articles: articles.data, authenticated: auth });
+      this.setState({ articles: articles.data });
     }
   };
 
@@ -34,12 +31,12 @@ class Home extends Component {
   render() {
     const { articles } = this.state;
 
-    if (this.loading) {
+    if (this.loading || this.props.authentication.loading) {
       return <Loading />;
     }
     return (
       <>
-        <Menu auth={this.state.authenticated} />
+        <Menu auth={this.props.authentication.authenticated} />
         <Container>
           {articles.map(article => (
             <ContainerItem key={article._id}>
@@ -54,4 +51,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withAuthentication()(Home);
