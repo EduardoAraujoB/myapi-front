@@ -1,5 +1,5 @@
 import React from "react";
-import { withAuthentication } from "../../components/Authentication";
+import { withAuthentication } from "../../components/hocs/Authentication";
 import Menu from "../../components/Menu";
 import Loading from "../../components/Loading";
 
@@ -30,28 +30,4 @@ const ArticleCreate = ({ authentication }) => {
   );
 };
 
-// class ArticleCreate extends Component {
-//   render() {
-//     return (
-//       <>
-//         <Menu />
-//         <Container>
-//           <Item>1</Item>
-//           <Item>2</Item>
-//           <Item>3</Item>
-//           <Item>4</Item>
-//           <Item>5</Item>
-//           <Item>6</Item>
-//           <Item>7</Item>
-//           <Item>8</Item>
-//           <Item>8</Item>
-//           <Item>10</Item>
-//           <Item>11</Item>
-//           <Item>12</Item>
-//         </Container>
-//       </>
-//     );
-//   }
-// }
-
-export default withAuthentication(ArticleCreate);
+export default withAuthentication()(ArticleCreate);
