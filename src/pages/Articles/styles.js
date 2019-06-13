@@ -1,12 +1,43 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const NewArticleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+`;
+
+export const NewArticleLink = styled.a`
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 40px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #fc6963;
+  border-radius: 10px;
+  height: 50px;
+  &:hover {
+    border: none;
+    background: #fff;
+    color: #fc6963;
+    border: 2px solid #fc6963;
+    transition: 100ms;
+  }
+`;
+
+export const ArticleContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-flow: row wrap;
   margin: 25px;
 `;
-export const ContainerItem = styled.div`
+
+export const ArticleStyle = styled.div`
   margin: 15px;
   display: flex;
   justify-content: center;

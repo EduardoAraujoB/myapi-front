@@ -3,74 +3,75 @@ import { withAuthentication } from "../../components/hocs/Authentication";
 import Menu from "../../components/Menu";
 import Loading from "../../components/Loading";
 
-import { Container, ContainerItem } from "./styles";
+import {
+  NewArticleContainer,
+  NewArticleLink,
+  ArticleContainer,
+  ArticleStyle
+} from "./styles";
 
-const ArticleCreate = ({ authentication }) => {
+const Articles = ({ authentication }) => {
   if (authentication.loading) {
     return <Loading />;
   }
   return (
     <>
       <Menu auth={authentication.authenticated} />
-      <Container>
-        <ContainerItem>
+      <ArticleContainer>
+        <ArticleStyle>
           <span>Teste</span>
           <p>
             Descrição Descrição Descrição Descrição Descrição Descrição
             Descrição Descrição Descrição Descrição
           </p>
           <a href="/articles">Acessar</a>
-        </ContainerItem>
-        <ContainerItem>
+        </ArticleStyle>
+        <ArticleStyle>
           <span>Teste</span>
           <p>
             Descrição Descrição Descrição Descrição Descrição Descrição
             Descrição Descrição Descrição Descrição
           </p>
           <a href="/articles">Acessar</a>
-        </ContainerItem>
-        <ContainerItem>
-          <span>Teste</span>
-          <p>Descrição Descrição De</p>
-          <a href="/articles">Acessar</a>
-        </ContainerItem>
-        <ContainerItem>
-          <span>Teste</span>
-          <p>Descrição Descrição</p>
-          <a href="/articles">Acessar</a>
-        </ContainerItem>
-        <ContainerItem>
+        </ArticleStyle>
+        <ArticleStyle>
           <span>Teste</span>
           <p>
             Descrição Descrição Descrição Descrição Descrição Descrição
             Descrição Descrição Descrição Descrição
           </p>
           <a href="/articles">Acessar</a>
-        </ContainerItem>
-        <ContainerItem>
+        </ArticleStyle>
+        <ArticleStyle>
           <span>Teste</span>
           <p>
             Descrição Descrição Descrição Descrição Descrição Descrição
             Descrição Descrição Descrição Descrição
           </p>
           <a href="/articles">Acessar</a>
-        </ContainerItem>
-        <ContainerItem>
+        </ArticleStyle>
+        <ArticleStyle>
           <span>Teste</span>
           <p>
             Descrição Descrição Descrição Descrição Descrição Descrição
             Descrição Descrição Descrição Descrição
           </p>
           <a href="/articles">Acessar</a>
-        </ContainerItem>
-        <ContainerItem>
+        </ArticleStyle>
+        <ArticleStyle>
           <span>Teste</span>
-          <p>Descrição Descrição Descrição De</p>
+          <p>
+            Descrição Descrição Descrição Descrição Descrição Descrição
+            Descrição Descrição Descrição Descrição
+          </p>
           <a href="/articles">Acessar</a>
-        </ContainerItem>
-      </Container>
+        </ArticleStyle>
+      </ArticleContainer>
+      <NewArticleContainer>
+        <NewArticleLink>Cadastrar um Novo Artigo</NewArticleLink>
+      </NewArticleContainer>
     </>
   );
 };
 
-export default withAuthentication()(ArticleCreate);
+export default withAuthentication()(Articles);
