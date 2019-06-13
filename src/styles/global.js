@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   body, html {
     background: #eee;
+    font-family: Arial, Helvetica, sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
     height: 100%;

@@ -3,7 +3,7 @@ import { withAuthentication } from "../../components/hocs/Authentication";
 import Menu from "../../components/Menu";
 import Loading from "../../components/Loading";
 
-import { Container, Item } from "./styles";
+import { Container, ContainerItem } from "./styles";
 
 const ArticleCreate = ({ authentication }) => {
   if (authentication.loading) {
@@ -13,18 +13,61 @@ const ArticleCreate = ({ authentication }) => {
     <>
       <Menu auth={authentication.authenticated} />
       <Container>
-        <Item>1</Item>
-        <Item>2</Item>
-        <Item>3</Item>
-        <Item>4</Item>
-        <Item>5</Item>
-        <Item>6</Item>
-        <Item>7</Item>
-        <Item>8</Item>
-        <Item>8</Item>
-        <Item>10</Item>
-        <Item>11</Item>
-        <Item>12</Item>
+        <ContainerItem>
+          <span>Teste</span>
+          <p>
+            Descrição Descrição Descrição Descrição Descrição Descrição
+            Descrição Descrição Descrição Descrição
+          </p>
+          <a href="/articles">Acessar</a>
+        </ContainerItem>
+        <ContainerItem>
+          <span>Teste</span>
+          <p>
+            Descrição Descrição Descrição Descrição Descrição Descrição
+            Descrição Descrição Descrição Descrição
+          </p>
+          <a href="/articles">Acessar</a>
+        </ContainerItem>
+        <ContainerItem>
+          <span>Teste</span>
+          <p>Descrição Descrição De</p>
+          <a href="/articles">Acessar</a>
+        </ContainerItem>
+        <ContainerItem>
+          <span>Teste</span>
+          <p>Descrição Descrição</p>
+          <a href="/articles">Acessar</a>
+        </ContainerItem>
+        <ContainerItem>
+          <span>Teste</span>
+          <p>
+            Descrição Descrição Descrição Descrição Descrição Descrição
+            Descrição Descrição Descrição Descrição
+          </p>
+          <a href="/articles">Acessar</a>
+        </ContainerItem>
+        <ContainerItem>
+          <span>Teste</span>
+          <p>
+            Descrição Descrição Descrição Descrição Descrição Descrição
+            Descrição Descrição Descrição Descrição
+          </p>
+          <a href="/articles">Acessar</a>
+        </ContainerItem>
+        <ContainerItem>
+          <span>Teste</span>
+          <p>
+            Descrição Descrição Descrição Descrição Descrição Descrição
+            Descrição Descrição Descrição Descrição
+          </p>
+          <a href="/articles">Acessar</a>
+        </ContainerItem>
+        <ContainerItem>
+          <span>Teste</span>
+          <p>Descrição Descrição Descrição De</p>
+          <a href="/articles">Acessar</a>
+        </ContainerItem>
       </Container>
     </>
   );
