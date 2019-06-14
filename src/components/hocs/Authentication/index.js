@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import { isAuthenticated } from "../../../services/auth";
+import api from "../../../services/api";
 
 export const withAuthentication = () => {
   return AuthComponent => {
@@ -8,6 +10,7 @@ export const withAuthentication = () => {
         super(props);
         this.state = {
           authenticated: false,
+          member: null,
           loading: true
         };
       }
@@ -17,7 +20,16 @@ export const withAuthentication = () => {
         this._isMounted = true;
         const auth = await isAuthenticated();
         if (this._isMounted) {
-          this.setState({ authenticated: auth, loading: false });
+          if (auth) {
+            const member = await api.get("/member");
+            this.setState({
+              authenticated: auth,
+              member: member.data,
+              loading: false
+            });
+          } else {
+            this.setState({ authenticated: auth, loading: false });
+          }
         }
       };
 
