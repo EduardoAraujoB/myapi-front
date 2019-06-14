@@ -7,9 +7,12 @@ import api from "../../services/api";
 import { withAuthentication } from "../../components/hocs/Authentication";
 
 class Home extends Component {
-  state = {
-    articles: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      articles: []
+    };
+  }
   _isMounted = false;
   loading = false;
 
@@ -42,6 +45,7 @@ class Home extends Component {
             <ContainerItem key={article._id}>
               <h1>{article.title}</h1>
               <p>{article.content}</p>
+              <strong>Autor: {article.member.name}</strong>
               <a href={`articles/${article._id}`}>Acessar</a>
             </ContainerItem>
           ))}

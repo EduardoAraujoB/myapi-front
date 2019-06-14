@@ -22,6 +22,7 @@ export const ContainerItem = styled.div`
   }
   p {
     margin-top: 20px;
+    margin-bottom: 20px;
     font-size: 20px;
   }
   a {
