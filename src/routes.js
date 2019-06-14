@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Articles from "./pages/Articles";
+import ArticleCreate from "./pages/Articles/ArticleCreate";
 import Members from "./pages/Members";
 import Logout from "./pages/Logout";
 
@@ -12,7 +13,8 @@ const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/articles" component={Articles} />
+      <Route exact path="/articles" component={Articles} />
+      <Route path="/articles/create" component={ArticleCreate} />
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/logout" component={Logout} />

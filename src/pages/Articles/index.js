@@ -67,9 +67,17 @@ const Articles = ({ authentication }) => {
           <a href="/articles">Acessar</a>
         </ArticleStyle>
       </ArticleContainer>
-      <NewArticleContainer>
-        <NewArticleLink>Cadastrar um Novo Artigo</NewArticleLink>
-      </NewArticleContainer>
+      {authentication.authenticated ? (
+        <NewArticleContainer>
+          <NewArticleLink href="/articles/create">
+            Cadastrar um Novo Artigo
+          </NewArticleLink>
+        </NewArticleContainer>
+      ) : (
+        <h4 style={{ textAlign: "center", marginBottom: 10 }}>
+          Faça Seu Cadastro Para Poder Publicar Artigos
+        </h4>
+      )}
     </>
   );
 };
