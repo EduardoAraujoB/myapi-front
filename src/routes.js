@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Articles from "./pages/Articles";
 import ArticleCreate from "./pages/Articles/ArticleCreate";
+import ArticleShow from "./pages/Articles/ArticleShow";
 import Members from "./pages/Members";
 import Logout from "./pages/Logout";
 
@@ -15,6 +16,7 @@ const Routes = () => (
       <Route exact path="/" component={Home} />
       <Route exact path="/articles" component={Articles} />
       <Route path="/articles/create" component={ArticleCreate} />
+      <Route path="/articles/:id" component={ArticleShow} />
       <Route path="/signin" component={SignIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/logout" component={Logout} />
