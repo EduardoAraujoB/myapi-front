@@ -5,7 +5,13 @@ import Loading from "../../../components/Loading";
 import Menu from "../../../components/Menu";
 import api from "../../../services/api";
 
-import { Container, Article, CommentContainer, Comment } from "./styles";
+import {
+  Container,
+  Article,
+  CommentContainer,
+  Comment,
+  CommentForm
+} from "./styles";
 
 class ArticleShow extends Component {
   constructor(props) {
@@ -40,6 +46,7 @@ class ArticleShow extends Component {
     if (this.props.authentication.authenticated) {
       this.loggedMember = this.props.authentication.member._id;
     }
+    console.log(article);
     return (
       <>
         <Menu auth={this.props.authentication.authenticated} />
@@ -52,29 +59,14 @@ class ArticleShow extends Component {
           <CommentContainer>
             <strong>Comentários</strong>
             <Comment>
-              <strong>Cleiton Rasta</strong>
-              <p>
-                Cabeça de gelo, fogo na babilônia Cabeça de gelo, fogo na
-                babilônia Cabeça de gelo, fogo na babilônia Cabeça de gelo, fogo
-                na babilônia Cabeça de gelo, fogo na babilônia Cabeça de gelo,
-                fogo na babilônia Cabeça de gelo, fogo na babilônia Cabeça de
-                gelo, fogo na babilônia Cabeça de gelo, fogo na babilônia Cabeça
-                de gelo, fogo na babilônia Cabeça de gelo, fogo na babilônia
-                Cabeça de gelo, fogo na babilônia
-              </p>
+              <strong>Nome da Pessoa</strong>
+              <p>Seu comentário</p>
             </Comment>
-            <Comment>
-              <strong>Cleiton Rasta</strong>
-              <p>
-                Cabeça de gelo, fogo na babilônia Cabeça de gelo, fogo na
-                babilônia Cabeça de gelo, fogo na babilônia Cabeça de gelo, fogo
-                na babilônia Cabeça de gelo, fogo na babilônia Cabeça de gelo,
-                fogo na babilônia Cabeça de gelo, fogo na babilônia Cabeça de
-                gelo, fogo na babilônia Cabeça de gelo, fogo na babilônia Cabeça
-                de gelo, fogo na babilônia Cabeça de gelo, fogo na babilônia
-                Cabeça de gelo, fogo na babilônia
-              </p>
-            </Comment>
+            <CommentForm>
+              <span>Faça seu Comentário</span>
+              <textarea />
+              <button type="submit">Enviar</button>
+            </CommentForm>
           </CommentContainer>
         </Container>
       </>
