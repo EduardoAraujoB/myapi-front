@@ -46,7 +46,7 @@ class ArticleShow extends Component {
     if (this.props.authentication.authenticated) {
       this.loggedMember = this.props.authentication.member._id;
     }
-    console.log(article);
+    const { comment } = article;
     return (
       <>
         <Menu auth={this.props.authentication.authenticated} />
@@ -58,10 +58,20 @@ class ArticleShow extends Component {
           </Article>
           <CommentContainer>
             <strong>Comentários</strong>
-            <Comment>
-              <strong>Nome da Pessoa</strong>
-              <p>Seu comentário</p>
-            </Comment>
+            {!comment === null || !comment === 0 ? (
+              comment.map(item => (
+                <Comment>
+                  <strong>Pessoa</strong>
+                  <p>Comentário</p>
+                </Comment>
+              ))
+            ) : (
+              <Comment>
+                <p>
+                  Não há comentários nesse artigo, seja o primeiro a comentar!
+                </p>
+              </Comment>
+            )}
             <CommentForm>
               <span>Faça seu Comentário</span>
               <textarea />
