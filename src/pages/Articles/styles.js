@@ -52,17 +52,21 @@ export const ArticleStyle = styled.div`
   color: #000;
   text-align: center;
   padding: 20px;
-  span {
-    padding: 10px;
+  & > span {
     width: 100%;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
+    color: #fc6963;
   }
-  p {
+  & > p {
     padding: 10px;
-    font-size: 15px;
+    font-size: 16px;
+    color: #777;
   }
-  a {
+  & > strong {
+    color: #5e5e5e;
+  }
+  & > a {
     margin-top: 10px;
     display: flex;
     justify-content: center;
