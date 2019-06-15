@@ -16,19 +16,23 @@ export const ContainerItem = styled.div`
   text-align: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
-  h1 {
+  & > h1 {
     font-size: 25px;
-    color: #888888;
+    color: #fc6963;
   }
-  p {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  & > p {
+    margin-top: 15px;
+    margin-bottom: 15px;
     font-size: 20px;
+    color: #777;
   }
-  a {
+  & > strong {
+    color: #5e5e5e;
+  }
+  & > a {
     display: flex;
     background: none;
-    margin-top: 20px;
+    margin-top: 15px;
     justify-content: center;
     align-items: center;
     width: 100%;
