@@ -19,6 +19,7 @@ class ArticleShow extends Component {
     super(props);
     this.state = {
       article: null,
+      comments: null,
       newComment: "",
       error: ""
     };
@@ -31,9 +32,10 @@ class ArticleShow extends Component {
     this._isMounted = true;
     this.loading = true;
     const article = await api.get(`/articles/${this.props.match.params.id}`);
+    const comments = await api.get(`/comments/${this.props.match.params.id}`);
     if (this._isMounted) {
       this.loading = false;
-      this.setState({ article: article.data });
+      this.setState({ article: article.data, comments: comments.data });
     }
   };
 
@@ -74,8 +76,7 @@ class ArticleShow extends Component {
     if (this.props.authentication.authenticated) {
       this.loggedMember = this.props.authentication.member._id;
     }
-    const { comment } = article;
-    console.log(article);
+    const { comments } = this.state;
     return (
       <>
         <Menu auth={this.props.authentication.authenticated} />
@@ -87,11 +88,11 @@ class ArticleShow extends Component {
           </Article>
           <CommentContainer>
             <strong>Comentários</strong>
-            {!comment === null || !comment === 0 ? (
-              comment.map(item => (
-                <Comment>
-                  <strong>Pessoa</strong>
-                  <p>Comentário</p>
+            {!(comments === null) || !(comments.length === 0) ? (
+              comments.map(comment => (
+                <Comment key={comment._id}>
+                  <strong>{comment.member.name}</strong>
+                  <p>{comment.content}</p>
                 </Comment>
               ))
             ) : (
