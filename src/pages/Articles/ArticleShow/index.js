@@ -88,7 +88,7 @@ class ArticleShow extends Component {
           </Article>
           <CommentContainer>
             <strong>Comentários</strong>
-            {!(comments === null) || !(comments.length === 0) ? (
+            {!(comments.length === 0) ? (
               comments.map(comment => (
                 <Comment key={comment._id}>
                   <strong>{comment.member.name}</strong>
