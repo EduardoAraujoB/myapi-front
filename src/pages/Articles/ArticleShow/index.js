@@ -85,6 +85,13 @@ class ArticleShow extends Component {
             <strong>{article.title}</strong>
             <p>{article.content}</p>
             <span>Autor: {article.member.name}</span>
+            {this.loggedMember === article.member._id ? (
+              <>
+                <h4>Você é o autor desse artigo e pode:</h4>
+                <a href="#dd">Edita-lo</a>
+                <a href="#dd">Apaga-lo</a>
+              </>
+            ) : null}
           </Article>
           <CommentContainer>
             <strong>Comentários</strong>

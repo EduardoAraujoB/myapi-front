@@ -36,6 +36,27 @@ export const Article = styled.div`
     font-weight: bold;
     text-align: right;
   }
+  & > h4 {
+    margin: 10px 0 20px 0;
+    color: #5e5e5e;
+  }
+  & > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 40px;
+    color: #fc6963;
+    font-weight: bold;
+    border: 2px solid #fc6963;
+    border-radius: 5px;
+    &:hover {
+      background: #fc6963;
+      color: #fff;
+      transition: 100ms;
+    }
+  }
 `;
 
 export const CommentContainer = styled.div`
@@ -117,7 +138,6 @@ export const CommentForm = styled.form`
     font-weight: bold;
     font-size: 15px;
     &:hover {
-      border: none;
       background: #fc6963;
       color: #fff;
       transition: 100ms;
