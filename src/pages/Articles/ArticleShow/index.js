@@ -88,7 +88,9 @@ class ArticleShow extends Component {
             {this.loggedMember === article.member._id ? (
               <>
                 <h4>Você é o autor desse artigo e pode:</h4>
-                <a href="#dd">Edita-lo</a>
+                <a href={`/articles/edit/${this.props.match.params.id}`}>
+                  Edita-lo
+                </a>
                 <a href="#dd">Apaga-lo</a>
               </>
             ) : null}
