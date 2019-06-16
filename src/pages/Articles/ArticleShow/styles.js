@@ -79,6 +79,17 @@ export const CommentForm = styled.form`
   width: 100%;
   height: auto;
   border-radius: 5px;
+  & > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    width: 100%;
+    height: 40px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+  }
   & > span {
     color: #fc6963;
     margin: 10px;

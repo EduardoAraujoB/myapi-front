@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 import { withAuthentication } from "../../../components/hocs/Authentication";
 import Loading from "../../../components/Loading";
@@ -17,7 +18,9 @@ class ArticleShow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      article: null
+      article: null,
+      newComment: "",
+      error: ""
     };
   }
   _isMounted = false;
@@ -38,6 +41,31 @@ class ArticleShow extends Component {
     this._isMounted = false;
   };
 
+  handleSubmit = async e => {
+    e.preventDefault();
+    if (this.props.authentication.authenticated) {
+      if (!this.state.newComment) {
+        this.setState({ error: "Não posso mandar um comentário vazio =D" });
+      } else {
+        const send = {
+          content: this.state.newComment,
+          article: this.state.article._id
+        };
+        try {
+          await api.post("/comments", send);
+          window.location.reload();
+        } catch (error) {
+          console.log(error, send);
+          this.setState({ error: "Erro ao cadastrar comentário" });
+        }
+      }
+    } else {
+      this.setState({
+        error: "Você prcisa estar logado para fazer um comentário"
+      });
+    }
+  };
+
   render() {
     const { article } = this.state;
     if (this.loading || this.props.authentication.loading) {
@@ -47,6 +75,7 @@ class ArticleShow extends Component {
       this.loggedMember = this.props.authentication.member._id;
     }
     const { comment } = article;
+    console.log(article);
     return (
       <>
         <Menu auth={this.props.authentication.authenticated} />
@@ -72,9 +101,12 @@ class ArticleShow extends Component {
                 </p>
               </Comment>
             )}
-            <CommentForm>
+            <CommentForm onSubmit={this.handleSubmit}>
               <span>Faça seu Comentário</span>
-              <textarea />
+              {this.state.error && <p>{this.state.error}</p>}
+              <textarea
+                onChange={e => this.setState({ newComment: e.target.value })}
+              />
               <button type="submit">Enviar</button>
             </CommentForm>
           </CommentContainer>
@@ -84,4 +116,4 @@ class ArticleShow extends Component {
   }
 }
 
-export default withAuthentication()(ArticleShow);
+export default withAuthentication()(withRouter(ArticleShow));
