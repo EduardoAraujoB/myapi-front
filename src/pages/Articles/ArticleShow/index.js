@@ -68,6 +68,18 @@ class ArticleShow extends Component {
     }
   };
 
+  handleDelete = async e => {
+    e.preventDefault();
+    if (this.loggedMember === this.state.article.member._id) {
+      try {
+        await api.delete(`/articles/${this.state.article._id}`);
+        this.props.history.push("/");
+      } catch (err) {
+        this.setState({ error: "erro ao apgar" });
+      }
+    }
+  };
+
   render() {
     const { article } = this.state;
     if (this.loading || this.props.authentication.loading) {
@@ -91,7 +103,7 @@ class ArticleShow extends Component {
                 <a href={`/articles/edit/${this.props.match.params.id}`}>
                   Edita-lo
                 </a>
-                <a href="#dd">Apaga-lo</a>
+                <button onClick={this.handleDelete}>Apaga-lo</button>
               </>
             ) : null}
           </Article>

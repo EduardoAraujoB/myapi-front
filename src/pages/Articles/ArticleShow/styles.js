@@ -57,6 +57,22 @@ export const Article = styled.div`
       transition: 100ms;
     }
   }
+  & > button {
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    background: none;
+    border: 2px solid #fc6963;
+    border-radius: 5px;
+    color: #fc6963;
+    font-weight: bold;
+    font-size: 15px;
+    &:hover {
+      background: #fc6963;
+      color: #fff;
+      transition: 100ms;
+    }
+  }
 `;
 
 export const CommentContainer = styled.div`
