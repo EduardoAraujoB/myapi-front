@@ -80,6 +80,16 @@ class ArticleShow extends Component {
     }
   };
 
+  handleCommentDelete = async Comment => {
+    console.log(Comment);
+    try {
+      await api.delete(`/comments/${Comment}`);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   render() {
     const { article } = this.state;
     if (this.loading || this.props.authentication.loading) {
@@ -114,6 +124,20 @@ class ArticleShow extends Component {
                 <Comment key={comment._id}>
                   <strong>{comment.member.name}</strong>
                   <p>{comment.content}</p>
+                  {this.props.authentication.authenticated ? (
+                    this.props.authentication.member.comment.indexOf(
+                      comment._id
+                    ) !== -1 ? (
+                      <button
+                        onClick={e => {
+                          e.preventDefault();
+                          return this.handleCommentDelete(comment._id);
+                        }}
+                      >
+                        Deletar
+                      </button>
+                    ) : null
+                  ) : null}
                 </Comment>
               ))
             ) : (

@@ -106,6 +106,22 @@ export const Comment = styled.div`
     margin: 10px 0 0 10px;
     color: #777;
   }
+  button {
+    cursor: pointer;
+    margin-top: 10px;
+    width: 60px;
+    height: 30px;
+    background: none;
+    color: #fc6963;
+    font-weight: bold;
+    border: 2px solid #fc6963;
+    border-radius: 5px;
+    &:hover {
+      background: #fc6963;
+      color: #fff;
+      transition: 100ms;
+    }
+  }
 `;
 
 export const CommentForm = styled.form`
