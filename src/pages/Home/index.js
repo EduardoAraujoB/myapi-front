@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, ContainerItem } from "./styles";
+import { Container, ContainerItem, NewItemContainer } from "./styles";
 import Menu from "../../components/Menu";
 import Loading from "../../components/Loading";
 
@@ -49,6 +49,11 @@ class Home extends Component {
               <a href={`articles/${article._id}`}>Acessar</a>
             </ContainerItem>
           ))}
+          {this.props.authentication.authenticated ? (
+            <NewItemContainer>
+              <a href="/articles/create">Cadastrar um Novo Artigo</a>
+            </NewItemContainer>
+          ) : null}
         </Container>
       </>
     );

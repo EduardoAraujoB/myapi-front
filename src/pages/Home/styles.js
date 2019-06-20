@@ -54,3 +54,20 @@ export const ContainerItem = styled.div`
     }
   }
 `;
+
+export const NewItemContainer = styled.div`
+  margin-top: 20px;
+  & > a {
+    padding: 10px;
+    background: #fff;
+    border: 2px solid #fc6963;
+    border-radius: 10px;
+    color: #fc6963;
+    font-weight: bold;
+    &:hover {
+      background: #fc6963;
+      color: #fff;
+      transition: 100ms;
+    }
+  }
+`;
