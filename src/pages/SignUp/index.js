@@ -45,7 +45,7 @@ class SignUp extends Component {
     if (!this.props.authentication.authenticated) {
       return (
         <>
-          <Menu auth={this.props.authentication.authenticated} />
+          <Menu auth={this.props.authentication} />
           <Container>
             <Form onSubmit={this.handleSignUp}>
               <span>SignUp</span>

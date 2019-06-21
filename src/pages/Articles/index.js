@@ -45,7 +45,7 @@ class Articles extends Component {
     console.log(articles);
     return (
       <>
-        <Menu auth={this.props.authentication.authenticated} />
+        <Menu auth={this.props.authentication} />
         <ArticleContainer>
           {articles.map(article => (
             <ArticleStyle key={article._id}>

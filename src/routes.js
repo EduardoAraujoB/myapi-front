@@ -9,6 +9,7 @@ import ArticleCreate from "./pages/Articles/ArticleCreate";
 import ArticleShow from "./pages/Articles/ArticleShow";
 import ArticleEdit from "./pages/Articles/ArticleEdit";
 import Members from "./pages/Members";
+import MemberProfile from "./pages/Members/MemberProfile";
 import Logout from "./pages/Logout";
 
 const Routes = () => (
@@ -23,6 +24,7 @@ const Routes = () => (
       <Route path="/signup" component={SignUp} />
       <Route path="/logout" component={Logout} />
       <Route exact path="/members" component={Members} />
+      <Route exact path="/members/:id" component={MemberProfile} />
       <Route exact path="*" component={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>

@@ -39,7 +39,7 @@ class Home extends Component {
     }
     return (
       <>
-        <Menu auth={this.props.authentication.authenticated} />
+        <Menu auth={this.props.authentication} />
         <Container>
           {articles.map(article => (
             <ContainerItem key={article._id}>

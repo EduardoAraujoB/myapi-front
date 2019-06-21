@@ -46,7 +46,7 @@ class Members extends Component {
       const { members } = this.state;
       return (
         <>
-          <Menu auth={this.props.authentication.authenticated} />
+          <Menu auth={this.props.authentication} />
           <Container>
             <MemberTable>
               <strong>Lista de Membros</strong>

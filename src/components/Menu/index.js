@@ -1,17 +1,14 @@
 import React from "react";
 
-import { withAuthentication } from "../hocs/Authentication";
 import { Header, Title, MenuButton, Logo } from "./styles";
 
-const Menu = ({ authentication }) => {
-  if (authentication.authenticated) {
+const Menu = ({ auth }) => {
+  if (auth.authenticated) {
     return (
       <Header>
         <Logo href="/">Logo</Logo>
         <Title>Nome do blog</Title>
-        <MenuButton href={`/members/${authentication.member._id}`}>
-          MyProfile
-        </MenuButton>
+        <MenuButton href={`/members/${auth.member._id}`}>MyProfile</MenuButton>
         <MenuButton href="/members">Members</MenuButton>
         <MenuButton href="/logout">Logout</MenuButton>
       </Header>
@@ -29,4 +26,4 @@ const Menu = ({ authentication }) => {
   }
 };
 
-export default withAuthentication()(Menu);
+export default Menu;

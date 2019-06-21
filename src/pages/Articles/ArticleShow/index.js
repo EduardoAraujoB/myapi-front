@@ -101,7 +101,7 @@ class ArticleShow extends Component {
     const { comments } = this.state;
     return (
       <>
-        <Menu auth={this.props.authentication.authenticated} />
+        <Menu auth={this.props.authentication} />
         <Container>
           <Article>
             <strong>{article.title}</strong>

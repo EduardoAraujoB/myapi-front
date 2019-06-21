@@ -67,7 +67,7 @@ class ArticleEdit extends Component {
       if (article.member._id === this.props.authentication.member._id) {
         return (
           <>
-            <Menu auth={this.props.authentication.authenticated} />
+            <Menu auth={this.props.authentication} />
             <Container>
               <Form onSubmit={this.handleSubmit}>
                 <span>Título</span>
