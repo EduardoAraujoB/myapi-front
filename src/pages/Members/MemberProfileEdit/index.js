@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
 import { withAuthentication } from "../../../components/hocs/Authentication";
 import Loading from "../../../components/Loading";
 import Menu from "../../../components/Menu";
 import { Container, Form } from "./styles";
+import api from "../../../services/api";
 
 class MemberProfileEdit extends Component {
   constructor(props) {
@@ -17,6 +18,40 @@ class MemberProfileEdit extends Component {
       error: ""
     };
   }
+
+  handleSubmit = async e => {
+    e.preventDefault();
+    const { name, birthdate, email, password } = this.state;
+    const send = {
+      name: "",
+      birthdate: "",
+      email: "",
+      password
+    };
+    const { member } = this.props.authentication;
+    if (!name) {
+      send.name = member.name;
+    } else {
+      send.name = name;
+    }
+    if (!birthdate) {
+      send.birthdate = member.birthdate;
+    } else {
+      send.birthdate = birthdate;
+    }
+    if (!email) {
+      send.email = member.email;
+    } else {
+      send.email = email;
+    }
+    try {
+      await api.put("/member", send);
+      this.props.history.push("/");
+    } catch (error) {
+      console.log(error);
+      this.setState({ error: "Erro ao atualizar" });
+    }
+  };
 
   dateFormat = date => {
     let data = new Date(date);
@@ -40,28 +75,33 @@ class MemberProfileEdit extends Component {
           <>
             <Menu auth={this.props.authentication} />
             <Container>
-              <Form>
+              <Form onSubmit={this.handleSubmit}>
                 <span>Atualizar Perfil</span>
                 {this.state.error && <p>{this.state.error}</p>}
                 <input
                   type="text"
                   placeholder="Nome do usuário"
                   defaultValue={member.name}
+                  onChange={e => this.setState({ name: e.target.value })}
                 />
                 <input
                   type="date"
                   placeholder="Data de Aniversário"
                   defaultValue={birthdate}
+                  onChange={e => this.setState({ birthdate: e.target.value })}
                 />
                 <input
                   type="email"
                   placeholder="Endereço de email"
                   defaultValue={member.email}
+                  onChange={e => this.setState({ email: e.target.value })}
                 />
                 <input
                   type="password"
                   placeholder="Senha"
                   defaultValue={member.password}
+                  onChange={e => this.setState({ password: e.target.value })}
+                  required
                 />
                 <button type="submit">Atualizar</button>
               </Form>
@@ -77,4 +117,4 @@ class MemberProfileEdit extends Component {
   }
 }
 
-export default withAuthentication()(MemberProfileEdit);
+export default withAuthentication()(withRouter(MemberProfileEdit));
