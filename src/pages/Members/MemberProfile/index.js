@@ -56,6 +56,7 @@ class MemberProfile extends Component {
                 <span>
                   Comentários: <p>{member.comment.length}</p>
                 </span>
+                <a href={`/members/edit/${this.props.authentication.member._id}`}>Editar Perfil</a>
               </Profile>
             </Container>
           </>

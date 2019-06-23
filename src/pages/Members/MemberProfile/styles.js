@@ -38,4 +38,20 @@ export const Profile = styled.div`
       color: #888888;
     }
   }
+  & > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    border: 2px solid #fc6963;
+    border-radius: 10px;
+    color: #fc6963;
+    font-weight: bold;
+    &:hover {
+      background: #fc6963;
+      color: #fff;
+      transition: 100ms;
+    }
+  }
 `;
