@@ -38,6 +38,30 @@ export const Profile = styled.div`
       color: #888888;
     }
   }
+`;
+
+export const ErrorContainer = styled.div`
+  display: flex;
+  justify-content: left;
+  width: 100%;
+  padding-left: 10px;
+  & > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 250px;
+    padding: 8px;
+    border: 1px solid #ff3333;
+    color: #ff3333;
+  }
+`;
+
+export const ProfileActions = styled.div`
+  display: flex;
+  width: 100%;
+  border-radius: 15px;
+  padding: 10px;
   & > a {
     display: flex;
     justify-content: center;
@@ -48,6 +72,23 @@ export const Profile = styled.div`
     border-radius: 10px;
     color: #fc6963;
     font-weight: bold;
+    &:hover {
+      background: #fc6963;
+      color: #fff;
+      transition: 100ms;
+    }
+  }
+  & > button {
+    cursor: pointer;
+    background: none;
+    margin-left: 10px;
+    width: 120px;
+    height: 40px;
+    border: 2px solid #fc6963;
+    border-radius: 10px;
+    color: #fc6963;
+    font-weight: bold;
+    font-size: 16px;
     &:hover {
       background: #fc6963;
       color: #fff;

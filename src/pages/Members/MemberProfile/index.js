@@ -1,17 +1,19 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
 import { withAuthentication } from "../../../components/hocs/Authentication";
 import api from "../../../services/api";
+import { logout } from "../../../services/auth";
 import Loading from "../../../components/Loading";
 import Menu from "../../../components/Menu";
-import { Container, Profile } from "./styles";
+import { Container, Profile, ErrorContainer, ProfileActions } from "./styles";
 
 class MemberProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      member: null
+      member: null,
+      error: null
     };
   }
   _isMounted = false;
@@ -29,6 +31,19 @@ class MemberProfile extends Component {
 
   componentWillUnmount = () => {
     this._isMounted = false;
+  };
+
+  handleDelete = async () => {
+    if (this.props.authentication.member._id === this.props.match.params.id) {
+      try {
+        await api.delete("/member");
+        logout();
+        this.props.history.push("/");
+      } catch (error) {
+        console.log(error);
+        this.setState({ error: "Erro ao apagar" });
+      }
+    }
   };
 
   render() {
@@ -56,7 +71,21 @@ class MemberProfile extends Component {
                 <span>
                   Comentários: <p>{member.comment.length}</p>
                 </span>
-                <a href={`/members/edit/${this.props.authentication.member._id}`}>Editar Perfil</a>
+                {this.state.error && (
+                  <ErrorContainer>
+                    <p>{this.state.error}</p>
+                  </ErrorContainer>
+                )}
+                <ProfileActions>
+                  <a
+                    href={`/members/edit/${
+                      this.props.authentication.member._id
+                    }`}
+                  >
+                    Editar Perfil
+                  </a>
+                  <button onClick={this.handleDelete}>Deltar Perfil</button>
+                </ProfileActions>
               </Profile>
             </Container>
           </>
@@ -70,4 +99,4 @@ class MemberProfile extends Component {
   }
 }
 
-export default withAuthentication()(MemberProfile);
+export default withAuthentication()(withRouter(MemberProfile));
