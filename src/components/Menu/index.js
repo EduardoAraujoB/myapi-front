@@ -3,13 +3,15 @@ import React, { Component } from "react";
 import {
   Header,
   Title,
-  MenuBar,
+  MenuBarOpen,
+  MenuBarClose,
   MobileMenu,
   MenuButtonContainer,
   MenuButton,
   Logo
 } from "./styles";
 import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
+import { ReactComponent as MenuIconClose } from "../../assets/icons/menu_close.svg";
 
 class Menu extends Component {
   constructor(props) {
@@ -24,11 +26,11 @@ class Menu extends Component {
   };
 
   render() {
-    if (this.props.auth.authenticated) {
-      return (
-        <Header>
-          <Logo href="/">Logo</Logo>
-          <Title>Nome do blog</Title>
+    return (
+      <Header>
+        <Logo href="/">Logo</Logo>
+        <Title>Nome do blog</Title>
+        {this.props.auth.authenticated ? (
           <MenuButtonContainer>
             <MenuButton href={`/members/${this.props.auth.member._id}`}>
               MyProfile
@@ -36,30 +38,27 @@ class Menu extends Component {
             <MenuButton href="/members">Members</MenuButton>
             <MenuButton href="/logout">Logout</MenuButton>
           </MenuButtonContainer>
-        </Header>
-      );
-    } else {
-      return (
-        <Header>
-          <Logo href="/">Logo</Logo>
-          <Title>Nome do blog</Title>
+        ) : (
           <MenuButtonContainer>
             <MenuButton href={`/articles`}>Articles</MenuButton>
             <MenuButton href="/signin">SignIn</MenuButton>
             <MenuButton href="/signup">SignUp</MenuButton>
           </MenuButtonContainer>
-          {this.state.menu_open ? (
-            <MobileMenu />
-          ) : (
-            <MenuBar>
-              <button onClick={this.handleMenu}>
-                <MenuIcon />
-              </button>
-            </MenuBar>
-          )}
-        </Header>
-      );
-    }
+        )}
+        <MenuBarOpen>
+          <button onClick={this.handleMenu}>
+            <MenuIcon />
+          </button>
+        </MenuBarOpen>
+        <MobileMenu active={this.state.menu_open}>
+          <MenuBarClose>
+            <button onClick={this.handleMenu}>
+              <MenuIconClose />
+            </button>
+          </MenuBarClose>
+        </MobileMenu>
+      </Header>
+    );
   }
 }
 

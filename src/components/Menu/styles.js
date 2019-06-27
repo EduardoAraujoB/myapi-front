@@ -9,7 +9,7 @@ export const Logo = styled.a`
   text-decoration: none;
 `;
 
-export const MenuBar = styled.div`
+export const MenuBarOpen = styled.div`
   display: none;
   justify-content: flex-end;
   align-items: flex-end;
@@ -22,12 +22,33 @@ export const MenuBar = styled.div`
   }
 `;
 
+export const MenuBarClose = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: auto;
+  width: 100%;
+  height: 75px;
+  border-bottom: 1px solid #fc6963;
+  padding: 20px;
+  & > button {
+    cursor: pointer;
+    background: none;
+  }
+`;
+
 export const MobileMenu = styled.div`
-  position: fixed;
-  bottom: 0;
+  position: absolute;
   background: white;
+  bottom: 0;
   width: 100%;
   height: 100%;
+  ${({ active }) =>
+    active
+      ? `transform: translateX(0);
+    transition: transform 400ms linear;`
+      : `transform: translateX(100%);
+      transition: transform 400ms linear;`}
 `;
 
 export const Title = styled.span`
@@ -85,7 +106,7 @@ export const Header = styled.nav`
     & > ${MenuButtonContainer} {
       display: none;
     }
-    & > ${MenuBar} {
+    & > ${MenuBarOpen} {
       display: flex;
     }
   }
