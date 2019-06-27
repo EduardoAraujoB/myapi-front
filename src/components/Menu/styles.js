@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-export const Header = styled.div`
-  background: #fc6963;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: 75px;
-`;
-
 export const Logo = styled.a`
   flex: 1;
   margin-left: 10px;
@@ -16,6 +7,27 @@ export const Logo = styled.a`
   font-weight: bold;
   font-size: 30px;
   text-decoration: none;
+`;
+
+export const MenuBar = styled.div`
+  display: none;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-self: auto;
+  flex: 1;
+  padding: 20px;
+  & > button {
+    cursor: pointer;
+    background: none;
+  }
+`;
+
+export const MobileMenu = styled.div`
+  position: fixed;
+  bottom: 0;
+  background: white;
+  width: 100%;
+  height: 100%;
 `;
 
 export const Title = styled.span`
@@ -59,5 +71,22 @@ export const MenuButton = styled.a`
     border: 2px solid #fff;
     color: #fff;
     background: none;
+  }
+`;
+
+export const Header = styled.nav`
+  background: #fc6963;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+  @media only screen and (max-width: 980px) {
+    & > ${MenuButtonContainer} {
+      display: none;
+    }
+    & > ${MenuBar} {
+      display: flex;
+    }
   }
 `;
