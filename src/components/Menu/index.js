@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Header, Title, MenuButton, Logo } from "./styles";
+import { Header, Title, MenuButtonContainer, MenuButton, Logo } from "./styles";
 
 const Menu = ({ auth }) => {
   if (auth.authenticated) {
@@ -8,9 +8,13 @@ const Menu = ({ auth }) => {
       <Header>
         <Logo href="/">Logo</Logo>
         <Title>Nome do blog</Title>
-        <MenuButton href={`/members/${auth.member._id}`}>MyProfile</MenuButton>
-        <MenuButton href="/members">Members</MenuButton>
-        <MenuButton href="/logout">Logout</MenuButton>
+        <MenuButtonContainer>
+          <MenuButton href={`/members/${auth.member._id}`}>
+            MyProfile
+          </MenuButton>
+          <MenuButton href="/members">Members</MenuButton>
+          <MenuButton href="/logout">Logout</MenuButton>
+        </MenuButtonContainer>
       </Header>
     );
   } else {
@@ -18,9 +22,11 @@ const Menu = ({ auth }) => {
       <Header>
         <Logo href="/">Logo</Logo>
         <Title>Nome do blog</Title>
-        <MenuButton href="/articles">Articles</MenuButton>
-        <MenuButton href="/signup">SignUp</MenuButton>
-        <MenuButton href="/signin">SignIn</MenuButton>
+        <MenuButtonContainer>
+          <MenuButton href="/articles">Articles</MenuButton>
+          <MenuButton href="/signup">SignUp</MenuButton>
+          <MenuButton href="/signin">SignIn</MenuButton>
+        </MenuButtonContainer>
       </Header>
     );
   }

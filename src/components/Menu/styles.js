@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const Header = styled.div`
   background: #fc6963;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 100%;
   height: 75px;
 `;
 
 export const Logo = styled.a`
+  flex: 1;
   margin-left: 10px;
-  flex-grow: 1;
   color: #fff;
   font-weight: bold;
   font-size: 30px;
@@ -19,17 +19,29 @@ export const Logo = styled.a`
 `;
 
 export const Title = styled.span`
-  flex-grow: 1;
-  margin-left: 30px;
+  flex: 1;
+  text-align: center;
   color: #fff;
   font-weight: bold;
   font-size: 24px;
 `;
 
+export const MenuButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-self: auto;
+  flex: 1;
+  margin: 5px;
+`;
+
 export const MenuButton = styled.a`
-  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 50px;
+  margin: 5px;
   padding: 10px;
-  margin: 0 4px;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
@@ -46,7 +58,6 @@ export const MenuButton = styled.a`
   &:active {
     border: 2px solid #fff;
     color: #fff;
-    border-radius: 10px;
     background: none;
   }
 `;
