@@ -46,9 +46,22 @@ export const MobileMenu = styled.div`
   ${({ active }) =>
     active
       ? `transform: translateX(0);
-    transition: transform 400ms linear;`
+    transition: transform 200ms linear;`
       : `transform: translateX(100%);
-      transition: transform 400ms linear;`}
+      transition: transform 200ms linear;`}
+  & > ul {
+    & > li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75px;
+      border-bottom: 1px solid #fc6963;
+      & > a {
+        color: #fc6963;
+        font-size: 25px;
+      }
+    }
+  }
 `;
 
 export const Title = styled.span`

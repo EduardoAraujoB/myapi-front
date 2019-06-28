@@ -56,6 +56,31 @@ class Menu extends Component {
               <MenuIconClose />
             </button>
           </MenuBarClose>
+          {this.props.auth.authenticated ? (
+            <ul>
+              <li>
+                <a href={`/members/${this.props.auth.member._id}`}>MyProfile</a>
+              </li>
+              <li>
+                <a href="/members">Members</a>
+              </li>
+              <li>
+                <a href="/logout">Logout</a>
+              </li>
+            </ul>
+          ) : (
+            <ul>
+              <li>
+                <a href="/articles">Articles</a>
+              </li>
+              <li>
+                <a href="/signin">SignIn</a>
+              </li>
+              <li>
+                <a href="/signup">SignUp</a>
+              </li>
+            </ul>
+          )}
         </MobileMenu>
       </Header>
     );
