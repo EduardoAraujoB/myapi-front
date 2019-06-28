@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 30px;
+  margin: 30px 15px 15px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,7 @@ export const MemberTable = styled.div`
   border-radius: 15px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  width: auto;
   & > strong {
     font-size: 20px;
     color: #fc6963;
@@ -23,15 +24,15 @@ export const MemberTable = styled.div`
   }
   & > table {
     border-collapse: collapse;
-    width: 100%;
+    width: auto;
     tr {
       & > td {
-        padding: 15px;
+        padding: 15px 0 15px;
         border-bottom: 1px solid #fc6963;
         color: #5e5e5e;
       }
       & > th {
-        padding: 15px;
+        padding: 15px 0 15px;
         border-bottom: 1px solid #fc6963;
         color: #fc6963;
       }

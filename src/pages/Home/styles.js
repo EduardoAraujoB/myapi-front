@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-`;
-
 export const ContainerItem = styled.div`
   width: 700px;
   padding: 20px;
@@ -68,6 +60,19 @@ export const NewItemContainer = styled.div`
       background: #fc6963;
       color: #fff;
       transition: 100ms;
+    }
+  }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  @media only screen and (max-width: 760px) {
+    & > ${ContainerItem} {
+      width: 400px;
     }
   }
 `;
