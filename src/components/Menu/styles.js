@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Logo = styled.a`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   flex: 1;
   margin-left: 10px;
   color: #fff;
@@ -11,9 +14,6 @@ export const Logo = styled.a`
 
 export const MenuBarOpen = styled.div`
   display: none;
-  justify-content: flex-end;
-  align-items: flex-end;
-  align-self: auto;
   flex: 1;
   padding: 20px;
   & > button {
@@ -24,7 +24,7 @@ export const MenuBarOpen = styled.div`
 
 export const MenuBarClose = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   align-self: auto;
   width: 100%;
@@ -47,7 +47,7 @@ export const MobileMenu = styled.div`
     active
       ? `transform: translateX(0);
     transition: transform 200ms linear;`
-      : `transform: translateX(100%);
+      : `transform: translateX(-100%);
       transition: transform 200ms linear;`}
   & > ul {
     & > li {
@@ -62,14 +62,6 @@ export const MobileMenu = styled.div`
       }
     }
   }
-`;
-
-export const Title = styled.span`
-  flex: 1;
-  text-align: center;
-  color: #fff;
-  font-weight: bold;
-  font-size: 24px;
 `;
 
 export const MenuButtonContainer = styled.div`
@@ -111,8 +103,9 @@ export const MenuButton = styled.a`
 export const Header = styled.nav`
   background: #fc6963;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  flex-direction: row;
   width: 100%;
   height: 75px;
   @media only screen and (max-width: 980px) {
@@ -121,6 +114,14 @@ export const Header = styled.nav`
     }
     & > ${MenuBarOpen} {
       display: flex;
+      flex: 0;
+    }
+    & > ${Logo} {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 74px;
+      flex: 1;
     }
   }
 `;

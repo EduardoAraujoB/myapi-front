@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import {
   Header,
-  Title,
   MenuBarOpen,
   MenuBarClose,
   MobileMenu,
@@ -28,8 +27,12 @@ class Menu extends Component {
   render() {
     return (
       <Header>
+        <MenuBarOpen>
+          <button onClick={this.handleMenu}>
+            <MenuIcon />
+          </button>
+        </MenuBarOpen>
         <Logo href="/">Logo</Logo>
-        <Title>Nome do blog</Title>
         {this.props.auth.authenticated ? (
           <MenuButtonContainer>
             <MenuButton href={`/members/${this.props.auth.member._id}`}>
@@ -45,11 +48,6 @@ class Menu extends Component {
             <MenuButton href="/signup">SignUp</MenuButton>
           </MenuButtonContainer>
         )}
-        <MenuBarOpen>
-          <button onClick={this.handleMenu}>
-            <MenuIcon />
-          </button>
-        </MenuBarOpen>
         <MobileMenu active={this.state.menu_open}>
           <MenuBarClose>
             <button onClick={this.handleMenu}>
