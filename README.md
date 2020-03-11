@@ -35,4 +35,10 @@
 
 <h3>Screenshots</h3>
 
-<span>I'll take screenshots later, sorry.</span>
+<strong>Desktop</strong>
+
+![Captura de tela de 2019-12-17 15-40-14](https://user-images.githubusercontent.com/42449213/76448323-eec89600-63a8-11ea-8004-2bd8c9798d5e.png)
+
+<strong>Mobile</strong>
+
+![Captura de tela de 2019-12-17 15-40-56](https://user-images.githubusercontent.com/42449213/76448443-1881bd00-63a9-11ea-8b65-122a0aa9f509.png)
